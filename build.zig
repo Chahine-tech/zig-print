@@ -39,13 +39,16 @@ pub fn build(b: *std.Build) void {
     // Link with required C libraries
     exe.linkSystemLibrary("cmark");
     exe.linkSystemLibrary("cairo");
+    exe.linkSystemLibrary("fontconfig");
     exe.linkLibC();
 
     // Add include paths for Homebrew installations
     exe.addIncludePath(.{ .cwd_relative = "/opt/homebrew/opt/cmark/include" });
     exe.addIncludePath(.{ .cwd_relative = "/opt/homebrew/opt/cairo/include" });
+    exe.addIncludePath(.{ .cwd_relative = "/opt/homebrew/opt/fontconfig/include" });
     exe.addLibraryPath(.{ .cwd_relative = "/opt/homebrew/opt/cmark/lib" });
     exe.addLibraryPath(.{ .cwd_relative = "/opt/homebrew/opt/cairo/lib" });
+    exe.addLibraryPath(.{ .cwd_relative = "/opt/homebrew/opt/fontconfig/lib" });
 
     // This declares intent for the executable to be installed into the
     // standard location when the user invokes the "install" step (the default
